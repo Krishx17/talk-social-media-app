@@ -34,5 +34,5 @@ export const getUserFriends = async (req, res) => {
 
 /* UPDATE */
 export const addRemoveFriend = async (req, res) => {
-    
+
 }
