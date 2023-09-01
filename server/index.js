@@ -9,6 +9,7 @@ import morgan from "morgan";
 import path from "path"; //comes with node alread need not be installed.
 import { fileURLToPath } from "url"; 
 import authRoutes from "./routes/auth.js";
+import userRoutes from "./routes/users.js"
 import { register } from "./controller/auth.js"
 
 /* CONFIGURATIONS --> includes all the middleware & package configs */
@@ -50,6 +51,8 @@ app.post("/auth/register", upload.single("picture"), register)
 
 /* ROUTES */
 app.use("/auth", authRoutes);
+app.use("/users", userRoutes);
+
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001; //connect to port provided in the .env, if not available connect to port 6001
