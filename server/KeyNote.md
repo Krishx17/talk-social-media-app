@@ -50,3 +50,6 @@ the stored hashedPassword, if matched user will be provided with the jwt token t
 
 # An API End-Point --> 
 In summary, an API endpoint is a specific location within an API that accepts requests and sends back responses. It's a way for different systems and applications to communicate with each other, by sending and receiving information and instructions via the endpoint
+
+# async await promises -->
+# Data modelling

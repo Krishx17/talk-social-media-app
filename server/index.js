@@ -10,7 +10,10 @@ import path from "path"; //comes with node alread need not be installed.
 import { fileURLToPath } from "url"; 
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js"
-import { register } from "./controller/auth.js"
+import postRoutes from "./routes/posts.js";
+import { register } from "./controller/auth.js";
+import { createPost } from "./controllers/posts.js"
+import { verifyToken } from "./middleware/auth.js";
 
 /* CONFIGURATIONS --> includes all the middleware & package configs */
 const __filename = fileURLToPath(import.meta.url);
@@ -48,11 +51,12 @@ register --> logic of actually saving the user into out database
 */
 //this router uses upload function so it can't be moved to the router section
 app.post("/auth/register", upload.single("picture"), register)
+app.post("/posts", verifyToken, upload.single("picture"), createPost)
 
 /* ROUTES */
 app.use("/auth", authRoutes);
 app.use("/users", userRoutes);
-
+app.use("/posts", postRoutes);
 
 /* MONGOOSE SETUP */
 const PORT = process.env.PORT || 6001; //connect to port provided in the .env, if not available connect to port 6001
