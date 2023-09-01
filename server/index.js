@@ -11,9 +11,12 @@ import { fileURLToPath } from "url";
 import authRoutes from "./routes/auth.js";
 import userRoutes from "./routes/users.js"
 import postRoutes from "./routes/posts.js";
-import { register } from "./controller/auth.js";
+import { register } from "./controllers/auth.js";
 import { createPost } from "./controllers/posts.js"
 import { verifyToken } from "./middleware/auth.js";
+import User from "./models/User.js";
+import Post from "./models/Post.js";
+import { users, posts } from "./data/index.js";
 
 /* CONFIGURATIONS --> includes all the middleware & package configs */
 const __filename = fileURLToPath(import.meta.url);
@@ -67,6 +70,14 @@ mongoose
 })
 .then(() => { //do this after connection 
     app.listen(PORT, () => console.log(`Database connected, Ready to fly 🚀🔥🍀 at Server Port: ${PORT}`));
+
+    /*manual injection of data
+    Add data only once*/
+    
+    // User.insertMany(users);
+    // Post.insertMany(posts);
+
+    /*Data has been injected, again inject the same data would result in redundancy. */
 })
 .catch((error) => console.log(`${error} did not connect 🚀🍀`)); //if error --> console log error
 
