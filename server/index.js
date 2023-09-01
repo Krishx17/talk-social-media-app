@@ -73,7 +73,7 @@ mongoose
 
     /*manual injection of data
     Add data only once*/
-    
+
     // User.insertMany(users);
     // Post.insertMany(posts);
 
