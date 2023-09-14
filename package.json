@@ -1,0 +1,6 @@
+{
+  "name":"talk-social",
+  "scripts": {
+    "dev": "turbo dev"
+  }
+}
